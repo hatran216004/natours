@@ -31,25 +31,25 @@ exports.getTour = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.getLoginForm = catchAsync((req, res, next) => {
+exports.getLoginForm = (req, res, next) => {
   res.status(200).render('login', {
     title: 'Login',
   });
-});
+};
 
-exports.getSignupForm = catchAsync((req, res, next) => {
+exports.getSignupForm = (req, res, next) => {
   res.status(200).render('signup', {
     title: 'Signup',
   });
-});
+};
 
-exports.getAccount = catchAsync((req, res, next) => {
+exports.getAccount = (req, res, next) => {
   res.status(200).render('account', {
     title: 'Account',
   });
-});
+};
 
-exports.getMyTours = catchAsync(async (req, res, next) => {
+exports.getMyTours = async (req, res, next) => {
   // 1) Find all bookings
   const bookings = await Booking.find({ user: req.user.id });
 
@@ -61,4 +61,4 @@ exports.getMyTours = catchAsync(async (req, res, next) => {
     title: 'My Tours',
     tours,
   });
-});
+};
