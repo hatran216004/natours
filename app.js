@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
+const compression = require('compression');
 // const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
@@ -137,7 +138,9 @@ app.use(
   Nếu khớp, Express sẽ trả về tệp đó. Nếu không khớp, yêu cầu sẽ tiếp tục được xử lý bởi các middleware hoặc 
   route handler khác mà bạn đã định nghĩa.
 
-  */
+*/
+
+app.use(compression());
 
 // Test middleware
 app.use((req, res, next) => {
